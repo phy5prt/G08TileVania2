@@ -15,7 +15,8 @@ bool isAlive = true;
 
 Rigidbody2D myRigidBody;
 Animator myAnimator;
-Collider2D myColl;
+CapsuleCollider2D myBodyColl;
+BoxCollider2D myFeet;
 	// Use this for initialization
 
 	//messages then methods
@@ -23,16 +24,20 @@ Collider2D myColl;
 
 	myRigidBody = GetComponent<Rigidbody2D>();
 	myAnimator = GetComponent<Animator>();
-	myColl = GetComponent<Collider2D>();
+	myBodyColl = GetComponent<CapsuleCollider2D>();
+		myFeet = GetComponent<BoxCollider2D>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
 
+
+	Die();
+	if(isAlive){
 	ClimbLadder();
 	Run();	
 	Jump();	
-
+	}
 
 		
 	}
@@ -43,7 +48,7 @@ Collider2D myColl;
 	float controlThrow = CrossPlatformInputManager.GetAxis("Horizontal"); // value between -1 to +1
 	Vector2 playerVelocity = new Vector2(controlThrow*runSpeed, myRigidBody.velocity.y );
 	myRigidBody.velocity = playerVelocity;
-print (playerVelocity);
+//print (playerVelocity);
 
 
 	bool playerHasHorizontalSpeed = Mathf.Abs(myRigidBody.velocity.x)>Mathf.Epsilon; //would have to change so based on current values if in game character will be changing size
@@ -56,7 +61,7 @@ print (playerVelocity);
 	}
 
 	private void Jump(){
-		if(!myColl.IsTouchingLayers(LayerMask.GetMask("Ground")) && !myColl.IsTouchingLayers(LayerMask.GetMask("Ladder"))){return;}
+		if(!myFeet.IsTouchingLayers(LayerMask.GetMask("Ground")) && !myFeet.IsTouchingLayers(LayerMask.GetMask("Ladder"))){return;}
 		//also want it to only jump if horizontal speed if on a ladder and to jump off the ladder not just reattach
 	if(CrossPlatformInputManager.GetButtonDown("Jump")){
 	Vector2 jumpVelocityToAdd = new Vector2(0f, jumpSpeed);
@@ -67,7 +72,7 @@ print (playerVelocity);
 
 	private void ClimbLadder(){
 
-		if(!myColl.IsTouchingLayers(LayerMask.GetMask("Ladder"))){
+		if(!myFeet.IsTouchingLayers(LayerMask.GetMask("Ladder"))){
 			myAnimator.SetBool("Climb",false);
 			myRigidBody.gravityScale = 1;	
 		return;}
@@ -84,6 +89,25 @@ print (playerVelocity);
 
 		
 
+
+	}
+//void OnTriggerExit(Collider coll){
+
+//	Debug.Log("Got me");
+//	if(coll.tag != "Enemy"){return;}
+		
+
+
+	//}
+
+	private void Die(){
+
+	if(myBodyColl.IsTouchingLayers(LayerMask.GetMask("Enemy"))){
+	if(isAlive){myRigidBody.velocity = new Vector2 (Random.Range(-50f,50f),Random.Range(10f,50f));}
+	myAnimator.SetTrigger("Death");
+	isAlive = false;
+
+		}
 
 	}
 	}
