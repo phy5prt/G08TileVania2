@@ -29,10 +29,10 @@ Collider2D myColl;
 	// Update is called once per frame
 	void Update () {
 
-
+	ClimbLadder();
 	Run();	
-		if(myColl.IsTouchingLayers(LayerMask.GetMask("Ground"))){Jump();}
-		ClimbLadder();
+	Jump();	
+
 
 		
 	}
@@ -56,7 +56,8 @@ print (playerVelocity);
 	}
 
 	private void Jump(){
-
+		if(!myColl.IsTouchingLayers(LayerMask.GetMask("Ground")) && !myColl.IsTouchingLayers(LayerMask.GetMask("Ladder"))){return;}
+		//also want it to only jump if horizontal speed if on a ladder and to jump off the ladder not just reattach
 	if(CrossPlatformInputManager.GetButtonDown("Jump")){
 	Vector2 jumpVelocityToAdd = new Vector2(0f, jumpSpeed);
 	myRigidBody.velocity += jumpVelocityToAdd;
@@ -66,13 +67,21 @@ print (playerVelocity);
 
 	private void ClimbLadder(){
 
-		if(!myColl.IsTouchingLayers(LayerMask.GetMask("Ladder"))){return;}
-		
+		if(!myColl.IsTouchingLayers(LayerMask.GetMask("Ladder"))){
+			myAnimator.SetBool("Climb",false);
+			myRigidBody.gravityScale = 1;	
+		return;}
+		myRigidBody.gravityScale = 0;
 		float controlThrow = CrossPlatformInputManager.GetAxis("Vertical"); // value between -1 to +1
 		Vector2 playerVelocity = new Vector2(myRigidBody.velocity.x, controlThrow*climbSpeed);
-		myRigidBody.velocity = playerVelocity;
-        myAnimator.SetBool("Climb",true);	
-        myRigidBody.gravityScale=0;
+		//myRigidBody.velocity = playerVelocity; //ive added a plus may go too fast //or maybe only alter the speed if up being pressed 
+		if(controlThrow != 0){myRigidBody.velocity = playerVelocity;} //if add += for less than zero will slide down ladders faster and faster and will add you x too so with level design
+		//could get made exploit
+		bool playerHasVerticalSpeed = Mathf.Abs(myRigidBody.velocity.y)>Mathf.Epsilon; //would have to change so based on current values if in game character will be changing size
+	
+		myAnimator.SetBool("Climb",playerHasVerticalSpeed);	
+
+
 		
 
 
