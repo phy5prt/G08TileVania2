@@ -104,10 +104,12 @@
      <Compile Include="Assets\Cinemachine\Timeline\CinemachineMixer.cs" />
      <Compile Include="Assets\Cinemachine\Timeline\CinemachineShot.cs" />
      <Compile Include="Assets\Cinemachine\Timeline\CinemachineTrack.cs" />
+     <Compile Include="Assets\GameManager.cs" />
      <Compile Include="Assets\Scripts\Enemy.cs" />
      <Compile Include="Assets\Scripts\LevelExit.cs" />
      <Compile Include="Assets\Scripts\Player.cs" />
-     <Compile Include="Assets\StartButton.cs" />
+     <Compile Include="Assets\Scripts\Spawn.cs" />
+     <Compile Include="Assets\Scripts\StartButton.cs" />
      <None Include="Assets\Cinemachine\ReleaseNotes.txt" />
  <Reference Include="UnityEngine.CoreModule">
  <HintPath>C:/Program Files (x86)/Unity 2017/Editor/Data/Managed/UnityEngine/UnityEngine.CoreModule.dll</HintPath>

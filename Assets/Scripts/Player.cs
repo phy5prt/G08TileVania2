@@ -62,7 +62,7 @@ BoxCollider2D myFeet;
 	}
 
 	private void Jump(){
-		if(!myFeet.IsTouchingLayers(LayerMask.GetMask("Ground")) && !myFeet.IsTouchingLayers(LayerMask.GetMask("Ladder"))){return;}
+		if(!myFeet.IsTouchingLayers(LayerMask.GetMask("Ground")) && !myFeet.IsTouchingLayers(LayerMask.GetMask("Ladder")) && !myFeet.IsTouchingLayers(LayerMask.GetMask("Player"))){return;}
 		//also want it to only jump if horizontal speed if on a ladder and to jump off the ladder not just reattach
 	if(CrossPlatformInputManager.GetButtonDown("Jump")){
 	Vector2 jumpVelocityToAdd = new Vector2(0f, jumpSpeed);
@@ -103,9 +103,9 @@ BoxCollider2D myFeet;
 
 	private void Die(){
 
-		if(myBodyColl.IsTouchingLayers(LayerMask.GetMask("Enemy"))){DramaticDeath();}
-		if(myBodyColl.IsTouchingLayers(LayerMask.GetMask("Impail"))){Impailed();}
-		if(myBodyColl.IsTouchingLayers(LayerMask.GetMask("Drown"))){Drown();}
+		if(myBodyColl.IsTouchingLayers(LayerMask.GetMask("Enemy"))){DramaticDeath();FindObjectOfType<GameManager>().ProccessPlayerDeath();}
+		if(myBodyColl.IsTouchingLayers(LayerMask.GetMask("Impail"))){Impailed();FindObjectOfType<GameManager>().ProccessPlayerDeath();}
+		if(myBodyColl.IsTouchingLayers(LayerMask.GetMask("Drown"))){Drown();FindObjectOfType<GameManager>().ProccessPlayerDeath();}
 
 	}
 
