@@ -5,6 +5,7 @@ using UnityEngine;
 public class coinPickup : MonoBehaviour {
 
 [SerializeField] public AudioClip coinPickUpSFX;
+[SerializeField] int myValue = 10;
 	// Use this for initialization
 	void Start () {
 		
@@ -20,8 +21,8 @@ public class coinPickup : MonoBehaviour {
 
 	Debug.Log("cointouched");
 	if(player.tag != "Player"){return;}
-	AudioSource.PlayClipAtPoint(coinPickUpSFX, GameObject.Find("Main Camera").gameObject.transform.localPosition);
-
+		AudioSource.PlayClipAtPoint(coinPickUpSFX, Camera.main.transform.position ); //this worked too GameObject.Find("Main Camera").gameObject.transform.position
+	GameObject.FindObjectOfType<GameManager>().AddToScore(myValue);
 	Destroy(gameObject);}
 
 }

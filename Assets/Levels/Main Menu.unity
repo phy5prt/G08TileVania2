@@ -6601,6 +6601,48 @@ PolygonCollider2D:
       - {x: 17.318516, y: -9.757626}
       - {x: 24.350441, y: -9.333881}
       - {x: 24.4742, y: 27.493052}
+--- !u!1001 &1319244313
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4478059158598978, guid: cbfd092418ae90c4f8545a4efdfd5b53, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 44.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4478059158598978, guid: cbfd092418ae90c4f8545a4efdfd5b53, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 30.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4478059158598978, guid: cbfd092418ae90c4f8545a4efdfd5b53, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0.6757935
+      objectReference: {fileID: 0}
+    - target: {fileID: 4478059158598978, guid: cbfd092418ae90c4f8545a4efdfd5b53, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4478059158598978, guid: cbfd092418ae90c4f8545a4efdfd5b53, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4478059158598978, guid: cbfd092418ae90c4f8545a4efdfd5b53, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4478059158598978, guid: cbfd092418ae90c4f8545a4efdfd5b53, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4478059158598978, guid: cbfd092418ae90c4f8545a4efdfd5b53, type: 2}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: cbfd092418ae90c4f8545a4efdfd5b53, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &1477001976
 GameObject:
   m_ObjectHideFlags: 0
@@ -8626,6 +8668,11 @@ Prefab:
         type: 2}
       propertyPath: playerLives
       value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 224655701963068730, guid: c16f4328a7d0c7f44affdb9b245898a9,
+        type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c16f4328a7d0c7f44affdb9b245898a9, type: 2}
