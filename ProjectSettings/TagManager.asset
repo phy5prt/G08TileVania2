@@ -23,7 +23,7 @@ TagManager:
   - Enemy
   - Drown
   - Impail
-  - 
+  - Interactables
   - 
   - 
   - 
@@ -54,6 +54,9 @@ TagManager:
     locked: 0
   - name: Drown
     uniqueID: 368120483
+    locked: 0
+  - name: Interactables
+    uniqueID: 2884594793
     locked: 0
   - name: Enemy
     uniqueID: 1244537361

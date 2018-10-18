@@ -10,7 +10,7 @@ public class Player : MonoBehaviour {
 	[SerializeField] float climbSpeed =5f;
 	[SerializeField] float jumpSpeed = 5f;
 //State
-bool isAlive = true;
+public bool isAlive = true;
 
 
 Rigidbody2D myRigidBody;
