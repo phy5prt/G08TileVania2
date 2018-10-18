@@ -32,8 +32,9 @@ BoxCollider2D myFeet;
 	void Update () {
 
 
-	Die();
+
 	if(isAlive){
+	Die();
 	ClimbLadder();
 	Run();	
 	Jump();	
@@ -102,13 +103,37 @@ BoxCollider2D myFeet;
 
 	private void Die(){
 
-	if(myBodyColl.IsTouchingLayers(LayerMask.GetMask("Enemy"))){
-	if(isAlive){myRigidBody.velocity = new Vector2 (Random.Range(-50f,50f),Random.Range(10f,50f));}
+		if(myBodyColl.IsTouchingLayers(LayerMask.GetMask("Enemy"))){DramaticDeath();}
+		if(myBodyColl.IsTouchingLayers(LayerMask.GetMask("Impail"))){Impailed();}
+		if(myBodyColl.IsTouchingLayers(LayerMask.GetMask("Drown"))){Drown();}
+
+	}
+
+
+
+
+	private void DramaticDeath(){
+	myRigidBody.velocity = new Vector2 (Random.Range(-50f,50f),Random.Range(10f,50f));
 	myAnimator.SetTrigger("Death");
 	isAlive = false;
 
-		}
 
 	}
+
+	private void Drown(){
+
+	myAnimator.SetTrigger("Death");
+	isAlive = false;
+
+
 	}
 
+	private void Impailed(){
+
+	myRigidBody.velocity = new Vector2 (0f,10f);
+	myAnimator.SetTrigger("Death");
+	isAlive = false;
+
+	}
+
+	}

@@ -21,8 +21,8 @@ TagManager:
   - Ladder
   - Background
   - Enemy
-  - 
-  - 
+  - Drown
+  - Impail
   - 
   - 
   - 
@@ -46,15 +46,18 @@ TagManager:
   - name: Background
     uniqueID: 3276971131
     locked: 0
+  - name: Foreground
+    uniqueID: 31964835
+    locked: 0
   - name: Climbing
     uniqueID: 851027199
+    locked: 0
+  - name: Drown
+    uniqueID: 368120483
     locked: 0
   - name: Enemy
     uniqueID: 1244537361
     locked: 0
   - name: Player
     uniqueID: 3932439759
-    locked: 0
-  - name: Foreground
-    uniqueID: 31964835
     locked: 0

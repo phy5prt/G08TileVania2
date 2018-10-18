@@ -129,7 +129,11 @@ TextureImporter:
     serializedVersion: 2
     sprites: []
     outline: []
-    physicsShape: []
+    physicsShape:
+    - - {x: -14.1612215, y: -16}
+      - {x: -6.013072, y: 0.3921566}
+      - {x: 10.501091, y: 1.1328964}
+      - {x: 14.422661, y: -16}
   spritePackingTag: 
   userData: 
   assetBundleName: 
