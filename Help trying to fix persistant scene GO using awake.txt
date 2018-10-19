@@ -1,0 +1,85 @@
+Hi I have been struggling with the code for this lecture.
+There are several ways to write code that does work. And I would like to see how other people solved it.
+
+
+More importantly I would like to understand why my approach doesn't work as I feel there is more important fundermental learning in that than actually solving the problem.
+
+...
+
+
+What I want the code to do.
+
+To make the  gameObject persist if the level is being reloaded - (with exception of if lose all lives on first level)
+
+To make the gameObject not persist. instead being replaced by the new version of the gameObject if the scene being reloaded is the same
+because the character is restarting and never progressed past the first level
+
+To ensure that as soon as possible if on reload of the same level causes another gameObject to be created that the unwanted one (the new one) is destroyed
+and the player does not see for a moment the gameObject children of both momentarily before one is destroyed.
+
+---------------------------
+The course code has the following problems in my game unity 2017.
+
+On loading a new level it destroys the new gameObject in the awake phase and then itself for not being the right object for the scene in the update
+Resulting in no gameObject at all (and no coins) when you next lose a life the coins reappear
+
+I think (I've changed lots) it may also keep the gameObject 
+
+
+--------------------------
+How i would like to solve it if possible
+
+I would like to solve it completely in the awake method so it is resolved at load and there is no threat of the player seeing items. And also so 
+I learn a little bit about the use of awake, start,update, fixupdate.
+
+(If you're reading because you just want to solve the issue I assume if you just use a find and destroy in the load next level and go back to first level methods. Or solve issues in update when scene has updated info
+you may wish to disable some part of the gameObject so that they are invisible until you have resolved which you want. )
+-> Mochant solved it here - https://community.gamedev.tv/t/about-remembering-pickups/69588/7?u=phy5prt
+------------------------
+My attempt - use paste bin
+
+
+
+
+
+
+
+My git (not done this before sorry if doesnt work)
+(if you run it sorry about the camera I've been running it in scene view until i sort the cameras)
+
+---------------------
+Observed behaviour
+
+My code has the same issues as in the lecture on loading the next level it destroys the new ScenePersist because there is an existing one and the old one
+because it does not match the scene.
+
+My code does it because on line 27 it reads 2 ScenePersist so destroys the one that is running the awake function which must therefore be the newest.
+However the debug says it has doestroyed a ScenePersist in the foreach, which must be the old one. And then destroys the new one in the awake as just mentioned.
+So it seems I think?! not to register the other scenePersist was deleted as if it counted the number of them before the delete. However the debug has them delete
+in the right order so this seems not the case.
+
+----------------------
+Things I assume I understand and are right:
+
+On reloading a scene if an object persists its awake and start are not rerun. So the singleton logic (is that what they called it) works because if
+you are running OnAwake you as a gameObject have just been born, and if another of you exists, and one of you have previously existed then because you
+are checking in the Awake and finding another you must be the newer version. (As when they ran awake they must of found no other version and so not deleted themselves).
+
+
+private int scenePersisting = -1;     - I believe I can use a private because I am trying to read scenePersisting of other ScenePersist (s) and that it is
+private to the class, so if the same class is looking for it doesnt have to be public.
+
+My double not statement seems to be okay.
+
+---------------------------
+Ideas why I think it may not work
+
+The code doesnt execute in order so the number of persistant objects is higher that it should be because no destroys have run.
+https://docs.unity3d.com/Manual/ExecutionOrder.html
+
+From reading what other people have found on awake the game doesnt know its scene build number again due to execution order maybe? 
+
+If I create an array of existing gameObject in awake, might it miss gameObjects because this gameObjects Awake() method has been called first? so 
+the other objects dont exist yet?
+
+My debug statements seem to occur in the right order but dont have the information i expect so I am not sure if this means the code is executed top to bottom or not.

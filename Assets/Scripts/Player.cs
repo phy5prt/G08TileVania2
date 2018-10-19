@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿//if(collision is CapsuleCollider2D)
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
