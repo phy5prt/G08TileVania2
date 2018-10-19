@@ -18,7 +18,7 @@ To ensure that as soon as possible if on reload of the same level causes another
 and the player does not see for a moment the gameObject children of both momentarily before one is destroyed.
 
 ---------------------------
-The course code has the following problems in my game unity 2017.
+The course code has the following problems in my game unity 2017.4.9f1
 
 On loading a new level it destroys the new gameObject in the awake phase and then itself for not being the right object for the scene in the update
 Resulting in no gameObject at all (and no coins) when you next lose a life the coins reappear
@@ -44,7 +44,7 @@ My attempt - use paste bin
 
 
 
-My git (not done this before sorry if doesnt work)
+My git (not done this before sorry if doesnt work) - https://github.com/phy5prt/G08TileVania2/blob/master/Assets/Scripts/ScenePersist.cs
 (if you run it sorry about the camera I've been running it in scene view until i sort the cameras)
 
 ---------------------
